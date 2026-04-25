@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PurokConnect | Modern Barangay Governance</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .hero-bg {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), 
+                  url('https://images.pexels.com/photos/13118957/pexels-photo-13118957.jpeg') center/cover no-repeat;
+    }
+    .card-hover:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans">
+
+  <!-- Navbar -->
+  <nav class="bg-emerald-700 text-white sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <img src="logo.png" alt="PurokConnect Logo" class="h-11 w-auto">
+        <div>
+          <span class="text-3xl font-bold tracking-tighter">PurokConnect</span>
+          <p class="text-xs text-emerald-200 -mt-1">Local Voices. Digital Solutions.</p>
+        </div>
+      </div>
+      <div class="hidden md:flex gap-8 text-sm font-medium">
+        <a href="#home" class="hover:text-emerald-200 transition">Home</a>
+        <a href="#features" class="hover:text-emerald-200 transition">Features</a>
+        <a href="#report" class="hover:text-emerald-200 transition">Report Problem</a>
+        <a href="#market" class="hover:text-emerald-200 transition">Marketplace</a>
+        <a href="#emergency" class="hover:text-emerald-200 transition">Emergency</a>
+      </div>
+      <!-- Green User Icon -->
+      <button onclick="alert('Welcome to PurokConnect!')" 
+              class="bg-emerald-600 hover:bg-emerald-500 text-white w-11 h-11 flex items-center justify-center rounded-2xl transition shadow-sm text-2xl">
+        <i class="fa-solid fa-user"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section - Philippines rural scene -->
+  <section id="home" class="hero-bg h-screen flex items-center text-white">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+        Connecting Puroks.<br>Strengthening Barangay.
+      </h1>
+      <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-10 text-emerald-100">
+        One platform for problem reporting, announcements, performance tracking, 
+        emergency response, and a local marketplace.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <button onclick="document.getElementById('report').scrollIntoView({behavior:'smooth'})" 
+                class="bg-emerald-600 hover:bg-emerald-500 px-10 py-4 rounded-2xl text-lg font-semibold transition flex items-center justify-center gap-3">
+          <i class="fa-solid fa-bullhorn"></i> Report a Problem Now
+        </button>
+        <button onclick="triggerEmergency()" 
+                class="border-2 border-white hover:bg-white/10 px-10 py-4 rounded-2xl text-lg font-semibold transition">
+          Call for Emergency Help
+        </button>
+      </div>
+      <p class="mt-12 text-sm text-emerald-200">Available on Mobile • Trusted by Residents • Powered by Community</p>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-4 text-gray-800">Everything Your Barangay Needs</h2>
+      <p class="text-center text-gray-600 mb-16 max-w-xl mx-auto">Modern tools that make governance faster, transparent, and inclusive.</p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white border border-gray-200 rounded-3xl p-8 card-hover transition-all">
+          <div class="w-16 h-16 bg-emerald-100 text-emerald-700 rounded-2xl flex items-center justify-center text-4xl mb-6">
+            <i class="fa-solid fa-exclamation-triangle"></i>
+          </div>
+          <h3 class="text-2xl font-semibold mb-3">Problem Reporting</h3>
+          <p class="text-gray-600">Report flooding, potholes, garbage issues, or safety concerns with photos and location. Track status in real time.</p>
+        </div>
+
+        <div class="bg-white border border-gray-200 rounded-3xl p-8 card-hover transition-all">
+          <div class="w-16 h-16 bg-blue-100 text-blue-700 rounded-2xl flex items-center justify-center text-4xl mb-6">
+            <i class="fa-solid fa-bullhorn"></i>
+          </div>
+          <h3 class="text-2xl font-semibold mb-3">Announcements & Updates</h3>
+          <p class="text-gray-600">Instant notices, events, weather alerts, and performance reports from barangay officials.</p>
+        </div>
+
+        <div class="bg-white border border-gray-200 rounded-3xl p-8 card-hover transition-all">
+          <div class="w-16 h-16 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center text-4xl mb-6">
+            <i class="fa-solid fa-store"></i>
+          </div>
+          <h3 class="text-2xl font-semibold mb-3">Local Marketplace</h3>
+          <p class="text-gray-600">Buy and sell local produce, services, and goods within your purok and barangay.</p>
+        </div>
+
+        <div class="bg-white border border-gray-200 rounded-3xl p-8 card-hover transition-all">
+          <div class="w-16 h-16 bg-red-100 text-red-700 rounded-2xl flex items-center justify-center text-4xl mb-6">
+            <i class="fa-solid fa-bell"></i>
+          </div>
+          <h3 class="text-2xl font-semibold mb-3">Emergency Response</h3>
+          <p class="text-gray-600">One-tap alerts for medical, fire, crime, or disaster. Officials get notified instantly with your location.</p>
+        </div>
+
+        <div class="bg-white border border-gray-200 rounded-3xl p-8 card-hover transition-all">
+          <div class="w-16 h-16 bg-purple-100 text-purple-700 rounded-2xl flex items-center justify-center text-4xl mb-6">
+            <i class="fa-solid fa-chart-bar"></i>
+          </div>
+          <h3 class="text-2xl font-semibold mb-3">Performance Tracking</h3>
+          <p class="text-gray-600">Real-time dashboard showing resolved issues and barangay performance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Report Section -->
+  <section id="report" class="py-20 bg-emerald-50">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-10">Report a Problem</h2>
+      <div class="bg-white rounded-3xl shadow-xl p-10">
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <label class="block text-sm font-medium mb-2">Issue Type</label>
+            <select class="w-full p-4 border border-gray-300 rounded-2xl">
+              <option>Flooding in Purok 3</option>
+              <option>Pothole on Main Road</option>
+              <option>Broken Street Light</option>
+              <option>Garbage Collection Delay</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-2">Your Purok</label>
+            <input type="text" value="Purok 5, Barangay Example" class="w-full p-4 border border-gray-300 rounded-2xl">
+          </div>
+        </div>
+        <div class="mt-6">
+          <label class="block text-sm font-medium mb-2">Description</label>
+          <textarea class="w-full h-32 p-4 border border-gray-300 rounded-3xl" placeholder="Water is rising near the chapel..."></textarea>
+        </div>
+        <button onclick="submitReport()" 
+                class="mt-8 w-full bg-emerald-600 hover:bg-emerald-700 text-white py-5 rounded-2xl text-lg font-semibold transition">
+          Submit Report
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <div class="flex justify-center gap-3 mb-6">
+        <img src="logo.png" alt="PurokConnect Logo" class="h-12">
+      </div>
+      <p class="text-gray-400">Modernizing barangay governance • Empowering every purok in the Philippines</p>
+      <p class="text-xs text-gray-500 mt-8">PurokConnect</p>
+    </div>
+  </footer>
+
+  <script>
+    function submitReport() {
+      alert("✅ Report successfully submitted!\nBarangay officials have been notified and will respond soon.");
+    }
+
+    function triggerEmergency() {
+      alert("🚨 Emergency alert sent!\nYour location has been shared with barangay officials and response team.");
+    }
+  </script>
+</body>
+</html>
