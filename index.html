@@ -46,31 +46,54 @@
 </nav>
 
 <!-- Mobile Peek Menu -->
-<div class="md:hidden bg-emerald-700 text-white">
-  <!-- Peek Tab -->
-  <button id="menu-toggle" class="w-full flex justify-center items-center py-2 text-sm font-medium bg-emerald-600">
-    <span>▼ More</span>
+<div class="md:hidden bg-emerald-700 text-white flex justify-center">
+  <!-- Peek Bulb -->
+  <button id="menu-toggle" 
+          class="w-10 h-10 bg-emerald-600 rounded-full shadow-md flex items-center justify-center text-lg">
+    <i id="menu-icon" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
   </button>
-  <!-- Hidden Menu -->
-  <div id="mobile-menu" class="hidden flex justify-around bg-emerald-800 py-3">
-    <a href="#market" class="flex flex-col items-center">
-      <i class="fa-solid fa-store text-lg"></i>
-      <span class="text-xs">Market</span>
-    </a>
-    <a href="#emergency" class="flex flex-col items-center">
-      <i class="fa-solid fa-triangle-exclamation text-lg"></i>
-      <span class="text-xs">Emergency</span>
-    </a>
-    <a href="#report" class="flex flex-col items-center">
-      <i class="fa-solid fa-file-alt text-lg"></i>
-      <span class="text-xs">Report</span>
-    </a>
-    <a href="#features" class="flex flex-col items-center">
-      <i class="fa-solid fa-star text-lg"></i>
-      <span class="text-xs">Features</span>
-    </a>
-  </div>
 </div>
+
+<!-- Hidden Menu -->
+<div id="mobile-menu" 
+     class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out flex justify-around bg-emerald-800">
+  <a href="#market" class="flex flex-col items-center py-3">
+    <i class="fa-solid fa-store text-lg"></i>
+    <span class="text-xs">Market</span>
+  </a>
+  <a href="#emergency" class="flex flex-col items-center py-3">
+    <i class="fa-solid fa-triangle-exclamation text-lg"></i>
+    <span class="text-xs">Emergency</span>
+  </a>
+  <a href="#report" class="flex flex-col items-center py-3">
+    <i class="fa-solid fa-file-alt text-lg"></i>
+    <span class="text-xs">Report</span>
+  </a>
+  <a href="#features" class="flex flex-col items-center py-3">
+    <i class="fa-solid fa-star text-lg"></i>
+    <span class="text-xs">Features</span>
+  </a>
+</div>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const icon = document.getElementById('menu-icon');
+  let open = false;
+
+  toggle.addEventListener('click', () => {
+    open = !open;
+    if (open) {
+      menu.classList.remove('max-h-0');
+      menu.classList.add('max-h-40'); // adjust height to fit content
+      icon.classList.add('rotate-180'); // rotate chevron upward
+    } else {
+      menu.classList.remove('max-h-40');
+      menu.classList.add('max-h-0');
+      icon.classList.remove('rotate-180'); // reset chevron downward
+    }
+  });
+</script>
 
   <!-- Hero Section - Philippines rural scene -->
   <section id="home" class="hero-bg h-screen flex items-center text-white">
