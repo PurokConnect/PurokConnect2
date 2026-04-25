@@ -106,9 +106,9 @@
         emergency response, and a local marketplace.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <button onclick="document.getElementById('report').scrollIntoView({behavior:'smooth'})" 
-                class="bg-emerald-600 hover:bg-emerald-500 px-10 py-4 rounded-2xl text-lg font-semibold transition flex items-center justify-center gap-3">
-          <i class="fa-solid fa-bullhorn"></i> Report a Problem Now
+        <button onclick="openProfileForm()" 
+        class="bg-emerald-600 hover:bg-emerald-500 px-10 py-4 rounded-2xl text-lg font-semibold transition flex items-center justify-center gap-3">
+  <i class="fa-solid fa-user"></i> Profile
         </button>
         <button onclick="triggerEmergency()" 
                 class="border-2 border-white hover:bg-white/10 px-10 py-4 rounded-2xl text-lg font-semibold transition">
@@ -118,7 +118,42 @@
       <p class="mt-12 text-sm text-emerald-200">Available on Mobile • Trusted by Residents • Powered by Community</p>
     </div>
   </section>
+<!-- Profile Form Modal -->
+<div id="profileForm" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+  <div class="bg-white rounded-2xl shadow-lg w-96 p-6 text-gray-800">
+    <h2 class="text-xl font-bold mb-4">Your Profile</h2>
+    <form id="profileData">
+      <label class="block mb-2">Name</label>
+      <input type="text" name="name" class="w-full border rounded p-2 mb-3" required>
 
+      <label class="block mb-2">Age</label>
+      <input type="number" name="age" class="w-full border rounded p-2 mb-3" required>
+
+      <label class="block mb-2">Sex</label>
+      <select name="sex" class="w-full border rounded p-2 mb-3" required>
+        <option value="">Select</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+
+      <label class="block mb-2">Address</label>
+      <input type="text" name="address" class="w-full border rounded p-2 mb-3" required>
+
+      <label class="block mb-2">Contact No.</label>
+      <input type="tel" name="contact" class="w-full border rounded p-2 mb-3" required>
+
+      <label class="block mb-2">Valid ID</label>
+      <input type="file" name="validid" class="w-full border rounded p-2 mb-3" accept="image/*,.pdf" required>
+
+      <div class="flex justify-end gap-3 mt-4">
+        <button type="button" onclick="closeProfileForm()" class="px-4 py-2 bg-gray-300 rounded">Cancel</button>
+        <button type="submit" class="px-4 py-2 bg-emerald-600 text-white rounded">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+  
   <!-- Features -->
   <section id="features" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-6">
@@ -272,25 +307,42 @@
   </section>
   
   <!-- Footer -->
-  <footer class="bg-emerald-700 text-white py-12">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <div class="flex justify-center gap-3 mb-6">
-        <img src="logo.png" alt="PurokConnect Logo" class="h-12">
-      </div>
-      <p class="text-xs text-emerald-200 -mt-1">Modernizing barangay governance</p>
-      <p class="text-xs text-emerald-200 -mt-1">Empowering every purok in the Philippines</p>
-      <p class="text-xs text-white mt-8">PurokConnect</p>
+<footer class="bg-emerald-700 text-white py-12">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <div class="flex justify-center gap-3 mb-6">
+      <img src="logo.png" alt="PurokConnect Logo" class="h-12">
     </div>
-  </footer>
+    <p class="text-xs text-emerald-200 -mt-1">Modernizing barangay governance</p>
+    <p class="text-xs text-emerald-200 -mt-1">Empowering every purok in the Philippines</p>
+    <p class="text-xs text-white mt-8">PurokConnect</p>
+  </div>
+</footer>
 
-  <script>
-    function submitReport() {
-      alert("✅ Report successfully submitted!\nBarangay officials have been notified and will respond soon.");
-    }
+<!-- Scripts -->
+<script>
+  function submitReport() {
+    alert("✅ Report successfully submitted!\nBarangay officials have been notified and will respond soon.");
+  }
 
-    function triggerEmergency() {
-      alert("🚨 Emergency alert sent!\nYour location has been shared with barangay officials and response team.");
-    }
-  </script>
+  function triggerEmergency() {
+    alert("🚨 Emergency alert sent!\nYour location has been shared with barangay officials and response team.");
+  }
+
+  function openProfileForm() {
+    document.getElementById('profileForm').classList.remove('hidden');
+  }
+
+  function closeProfileForm() {
+    document.getElementById('profileForm').classList.add('hidden');
+  }
+
+  // Handle form submission
+  document.getElementById('profileData').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Profile saved! You can edit later.');
+    closeProfileForm();
+  });
+</script>
+
 </body>
 </html>
