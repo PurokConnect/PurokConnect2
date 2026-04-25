@@ -15,6 +15,11 @@
       transform: translateY(-10px);
       box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15);
     }
+
+    /* Smooth slide-down for mobile menu */
+    #mobile-menu {
+      transition: max-height 0.5s ease-in-out;
+    }
   </style>
 </head>
 <body class="bg-gray-50 font-sans">
@@ -38,25 +43,16 @@
       <a href="#emergency" class="hover:text-emerald-200 transition">Emergency</a>
     </div>
     <!-- Green User Icon -->
-    <button onclick="alert('Welcome to PurokConnect!')" 
+    <button onclick="openProfileForm()" 
             class="bg-emerald-600 hover:bg-emerald-500 text-white w-11 h-11 flex items-center justify-center rounded-2xl transition shadow-sm text-2xl">
       <i class="fa-solid fa-user"></i>
     </button>
   </div>
 </nav>
 
-<!-- Mobile Peek Menu -->
-<div class="md:hidden bg-emerald-700 text-white flex justify-center">
-  <!-- Peek Bulb -->
-  <button id="menu-toggle" 
-          class="w-10 h-10 bg-emerald-600 rounded-full shadow-md flex items-center justify-center text-lg">
-    <i id="menu-icon" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
-  </button>
-</div>
-
-<!-- Hidden Menu -->
+<!-- Popup Menu (directly under navbar) -->
 <div id="mobile-menu" 
-     class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out flex justify-around bg-emerald-800">
+     class="hidden md:hidden bg-emerald-800 text-white flex justify-around shadow-md rounded-b-2xl transition-all duration-500 ease-in-out">
   <a href="#market" class="flex flex-col items-center py-3">
     <i class="fa-solid fa-store text-lg"></i>
     <span class="text-xs">Market</span>
@@ -75,6 +71,14 @@
   </a>
 </div>
 
+<!-- Circle trigger (overlaps popup bottom edge) -->
+<div class="md:hidden flex justify-center -mt-6">
+  <button id="menu-toggle" 
+          class="w-10 h-10 bg-emerald-600 rounded-full shadow-md flex items-center justify-center text-lg">
+    <i id="menu-icon" class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+  </button>
+</div>
+
 <script>
   const toggle = document.getElementById('menu-toggle');
   const menu = document.getElementById('mobile-menu');
@@ -84,12 +88,10 @@
   toggle.addEventListener('click', () => {
     open = !open;
     if (open) {
-      menu.classList.remove('max-h-0');
-      menu.classList.add('max-h-40'); // adjust height to fit content
+      menu.classList.remove('hidden');
       icon.classList.add('rotate-180'); // rotate chevron upward
     } else {
-      menu.classList.remove('max-h-40');
-      menu.classList.add('max-h-0');
+      menu.classList.add('hidden');
       icon.classList.remove('rotate-180'); // reset chevron downward
     }
   });
