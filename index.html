@@ -50,6 +50,48 @@
   </div>
 </nav>
 
+<!-- Profile Modal -->
+<div id="profileForm" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+  <div class="bg-white rounded-2xl shadow-lg p-8 w-96 text-gray-800">
+    <h2 class="text-xl font-bold mb-4">Your Profile</h2>
+    <form id="profileData">
+      <!-- Name -->
+      <label class="block mb-2">Name</label>
+      <input type="text" name="name" class="w-full border rounded p-2 mb-3" required>
+
+      <!-- Age -->
+      <label class="block mb-2">Age</label>
+      <input type="number" name="age" class="w-full border rounded p-2 mb-3" required>
+
+      <!-- Sex -->
+      <label class="block mb-2">Sex</label>
+      <select name="sex" class="w-full border rounded p-2 mb-3" required>
+        <option value="">Select</option>
+        <option>Male</option>
+        <option>Female</option>
+      </select>
+
+      <!-- Address -->
+      <label class="block mb-2">Address</label>
+      <input type="text" name="address" class="w-full border rounded p-2 mb-3" required>
+
+      <!-- Contact Number -->
+      <label class="block mb-2">Contact No.</label>
+      <input type="tel" name="contact" class="w-full border rounded p-2 mb-3" required>
+
+      <!-- Valid ID -->
+      <label class="block mb-2">Valid ID</label>
+      <input type="file" name="validid" class="w-full border rounded p-2 mb-3" accept="image/*,.pdf" required>
+
+      <!-- Buttons -->
+      <div class="flex justify-end gap-3 mt-4">
+        <button type="button" onclick="closeProfileForm()" class="px-4 py-2 bg-gray-300 rounded">Cancel</button>
+        <button type="submit" class="px-4 py-2 bg-emerald-600 text-white rounded">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <!-- Popup Menu (directly under navbar) -->
 <div id="mobile-menu" 
      class="max-h-0 overflow-hidden md:hidden bg-emerald-800 text-white flex justify-around shadow-md rounded-b-2xl">
@@ -324,38 +366,62 @@
 
 <!-- Scripts -->
 <script>
-  // Profile modal functions
-  function openProfileForm() {
-    document.getElementById('profileForm').classList.remove('hidden');
-  }
+  document.addEventListener("DOMContentLoaded", () => {
+    // Profile modal functions
+    window.openProfileForm = function() {
+      document.getElementById('profileForm').classList.remove('hidden');
+    }
 
-  function closeProfileForm() {
-    document.getElementById('profileForm').classList.add('hidden');
-  }
+    window.closeProfileForm = function() {
+      document.getElementById('profileForm').classList.add('hidden');
+    }
 
-  // Handle profile form submission
-  document.getElementById('profileData').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Profile saved! You can edit later.');
-    closeProfileForm();
-  });
+    // Handle profile form submission
+    const profileForm = document.getElementById('profileData');
+    if (profileForm) {
+      profileForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Profile saved! You can edit later.');
+        closeProfileForm();
+      });
+    }
 
-  // Popup menu toggle
-  const toggle = document.getElementById('menu-toggle');
-  const menu = document.getElementById('mobile-menu');
-  const icon = document.getElementById('menu-icon');
-  let open = false;
+    // Report + Emergency alerts
+    window.submitReport = function() {
+      alert("✅ Report successfully submitted!\nBarangay officials have been notified and will respond soon.");
+    }
 
-  toggle.addEventListener('click', () => {
-    open = !open;
-    if (open) {
-      menu.classList.remove('max-h-0');
-      menu.classList.add('max-h-48'); // expand smoothly
-      icon.classList.add('rotate-180'); // rotate chevron upward
-    } else {
-      menu.classList.remove('max-h-48');
-      menu.classList.add('max-h-0');   // collapse smoothly
-      icon.classList.remove('rotate-180'); // reset chevron downward
+    window.triggerEmergency = function() {
+      alert("🚨 Emergency alert sent!\nYour location has been shared with barangay officials and response team.");
+    }
+
+    // Call for Emergency Help button → scroll down
+    const emergencyBtn = document.querySelector('button[onclick="triggerEmergency()"]');
+    if (emergencyBtn) {
+      emergencyBtn.addEventListener('click', () => {
+        document.getElementById('emergency').scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+
+    // Popup menu toggle
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    const icon = document.getElementById('menu-icon');
+    let open = false;
+
+    if (toggle && menu && icon) {
+      toggle.addEventListener('click', () => {
+        open = !open;
+        if (open) {
+          menu.classList.remove('max-h-0');
+          menu.classList.add('max-h-48');
+          icon.classList.add('rotate-180');
+        } else {
+          menu.classList.remove('max-h-48');
+          menu.classList.add('max-h-0');
+          icon.classList.remove('rotate-180');
+        }
+      });
     }
   });
 </script>
