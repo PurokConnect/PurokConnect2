@@ -52,7 +52,7 @@
 
 <!-- Popup Menu (directly under navbar) -->
 <div id="mobile-menu" 
-     class="hidden md:hidden bg-emerald-800 text-white flex justify-around shadow-md rounded-b-2xl transition-all duration-500 ease-in-out">
+     class="max-h-0 overflow-hidden md:hidden bg-emerald-800 text-white flex justify-around shadow-md rounded-b-2xl">
   <a href="#market" class="flex flex-col items-center py-3">
     <i class="fa-solid fa-store text-lg"></i>
     <span class="text-xs">Market</span>
@@ -343,6 +343,25 @@
     e.preventDefault();
     alert('Profile saved! You can edit later.');
     closeProfileForm();
+  });
+
+  // ✅ Mobile menu toggle script
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const icon = document.getElementById('menu-icon');
+  let open = false;
+
+  toggle.addEventListener('click', () => {
+    open = !open;
+    if (open) {
+      menu.classList.remove('max-h-0');
+      menu.classList.add('max-h-48'); // fits your 4 items
+      icon.classList.add('rotate-180'); // rotate chevron upward
+    } else {
+      menu.classList.remove('max-h-48');
+      menu.classList.add('max-h-0');
+      icon.classList.remove('rotate-180'); // reset chevron downward
+    }
   });
 </script>
 
