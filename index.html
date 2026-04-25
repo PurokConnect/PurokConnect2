@@ -309,61 +309,61 @@
   </section>
   
   <!-- Footer -->
-<footer class="bg-emerald-700 text-white py-12">
-  <div class="max-w-7xl mx-auto px-6 text-center">
-    <div class="flex justify-center gap-3 mb-6">
-      <img src="logo.png" alt="PurokConnect Logo" class="h-12">
+  <footer class="bg-emerald-700 text-white py-12">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <div class="flex justify-center gap-3 mb-6">
+        <img src="logo.png" alt="PurokConnect Logo" class="h-12">
+      </div>
+      <p class="text-xs text-emerald-200 -mt-1">Modernizing barangay governance</p>
+      <p class="text-xs text-emerald-200 -mt-1">Empowering every purok in the Philippines</p>
+      <p class="text-xs text-white mt-8">PurokConnect</p>
     </div>
-    <p class="text-xs text-emerald-200 -mt-1">Modernizing barangay governance</p>
-    <p class="text-xs text-emerald-200 -mt-1">Empowering every purok in the Philippines</p>
-    <p class="text-xs text-white mt-8">PurokConnect</p>
-  </div>
-</footer>
+  </footer>
 
-<!-- Scripts -->
-<script>
-  function submitReport() {
-    alert("✅ Report successfully submitted!\nBarangay officials have been notified and will respond soon.");
-  }
-
-  function triggerEmergency() {
-    alert("🚨 Emergency alert sent!\nYour location has been shared with barangay officials and response team.");
-  }
-
-  function openProfileForm() {
-    document.getElementById('profileForm').classList.remove('hidden');
-  }
-
-  function closeProfileForm() {
-    document.getElementById('profileForm').classList.add('hidden');
-  }
-
-  // Handle form submission
-  document.getElementById('profileData').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Profile saved! You can edit later.');
-    closeProfileForm();
-  });
-
-  // ✅ Mobile menu toggle script
-  const toggle = document.getElementById('menu-toggle');
-  const menu = document.getElementById('mobile-menu');
-  const icon = document.getElementById('menu-icon');
-  let open = false;
-
-  toggle.addEventListener('click', () => {
-    open = !open;
-    if (open) {
-      menu.classList.remove('max-h-0');
-      menu.classList.add('max-h-48'); // fits your 4 items
-      icon.classList.add('rotate-180'); // rotate chevron upward
-    } else {
-      menu.classList.remove('max-h-48');
-      menu.classList.add('max-h-0');
-      icon.classList.remove('rotate-180'); // reset chevron downward
+  <!-- Scripts -->
+  <script>
+    function submitReport() {
+      alert("✅ Report successfully submitted!\nBarangay officials have been notified and will respond soon.");
     }
-  });
-</script>
+
+    function triggerEmergency() {
+      alert("🚨 Emergency alert sent!\nYour location has been shared with barangay officials and response team.");
+    }
+
+    function openProfileForm() {
+      document.getElementById('profileForm').classList.remove('hidden');
+    }
+
+    function closeProfileForm() {
+      document.getElementById('profileForm').classList.add('hidden');
+    }
+
+    // Handle profile form submission
+    document.getElementById('profileData').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Profile saved! You can edit later.');
+      closeProfileForm();
+    });
+
+    // ✅ Mobile menu toggle script
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    const icon = document.getElementById('menu-icon');
+    let open = false;
+
+    toggle.addEventListener('click', () => {
+      open = !open;
+      if (open) {
+        menu.classList.remove('max-h-0');
+        menu.classList.add('max-h-48'); // expand smoothly
+        icon.classList.add('rotate-180'); // rotate chevron upward
+      } else {
+        menu.classList.remove('max-h-48');
+        menu.classList.add('max-h-0');   // collapse smoothly
+        icon.classList.remove('rotate-180'); // reset chevron downward
+      }
+    });
+  </script>
 
 </body>
 </html>
